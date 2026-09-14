@@ -1,128 +1,96 @@
-# 🏠 Maskan AI (Student Housing AI) — Frontend Platform
+# Maskan AI — Frontend Platform
 
-[![React](https://img.shields.io/badge/React-18%2B-61DAFB?logo=react&logoColor=black)](https://react.js.org/)
-[![Vite](https://img.shields.io/badge/Vite-5%2B-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
-[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3%2B-38B2AC?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Design System](https://img.shields.io/badge/Design_System-Warm_Earthy_Minimalist-8e4e1f)](https://fonts.google.com/specimen/Plus+Jakarta+Sans)
-
-> **منصة السكن الطلابي الذكية (Maskan AI)** — واجهة أمامية حديثة، متكاملة، ومبنية بدقة بالملي (Pixel-Perfect) لخدمة الطلاب، أصحاب العقارات، والمشرفين بدعم متكامل للذكاء الاصطناعي.
+An AI-powered student housing platform engineered for university students, property owners, and administrators in Egypt. Built with **React 18**, **TypeScript**, and **TailwindCSS**, following the **Warm Earthy Minimalist** design system.
 
 ---
 
-## 🌟 مميزات المنصة (Key Features)
+## Key Features
 
-- **🔍 بحث ذكي وفلترة متقدمة (AI-Powered Natural Search):** استخراج معايير وتفضيلات البحث من النص الطبيعي تلقائياً عبر بوابات الـ AI (`/ai/extract-requirements`).
-- **🎯 مؤشر التوافق الذكي (AI Match Score):** فحص نسبة توافق كل سكن مع تفضيلات الطالب والجامعة وشرح تفصيلي لنقاط القوة والمفاضلة.
-- **📄 محلل عقود الإيجار (AI Lease Analyzer):** أداة ذكية لرفع وفحص مسودات عقود الإيجار واستخراج البنود الحرجة، تقييم نسبة المخاطرة، وتوصيات السلامة القانونية.
-- **⚖️ مقارنة الشقق (Property Comparison):** مقارنة تفصيلية جنباً إلى جنب بين مختلف الوحدات السكنية في الأسعار، المسافة للحرم الجامعي، والمرافق.
-- **🛡️ منظومة توثيق معتمدة (Verified Student Housing):** رفع أوراق الملكية وفحصها من قبل المشرفين قبل نشر العقارات لضمان أمان وموثوقية السكن للطلاب.
-- **💬 شات ومواعيد معاينة تفاعلية (Tours & Messaging):** طلب وجدولة جولات المعاينة ومحادثة مباشرة بين الطالب وصاحب العقار.
-- **📊 لوحات تحكم متعددة الأدوار (Role-Based Dashboards):** تجربة مخصصة لكل من: الطالب (`STUDENT`)، المالك (`OWNER`)، والمشرف/المدير (`SUPERVISOR`/`ADMIN`).
-
----
-
-## 🎨 نظام التصميم (Design System)
-
-تم بناء الواجهة بناءً على نظام التصميم المعتمد **`Warm Earthy Minimalist`**:
-- **الألوان الأساسية:** درجات الـ Warm Neutrals (`#fcf9f3`)، الـ Terracotta (`#8e4e1f`)، والأخضر الزيتوني الداكن (`#1a2719`).
-- **الخط الأساسي:** `Plus Jakarta Sans` مع ضبط مقاسات وأوزان الـ Typography بدقة.
-- **الأيقونات:** `Material Symbols Outlined`.
+- **Natural Language Search**: Extracts search constraints (budget, walking distance, bedrooms, amenities) from free-form text via AI.
+- **AI Match Score**: Calculates compatibility between student preferences, academic faculty gates, and property features.
+- **AI Lease Analyzer**: Evaluates lease agreement drafts (PDF/TXT) for predatory clauses, risk scoring, and legal recommendations.
+- **Property Comparison Matrix**: Side-by-side comparison for student roommates (rent per student share, deposit, walk distance, amenities).
+- **Tour Scheduling & Direct Messaging**: Real-time messaging with verified landlords and guided tour requests.
+- **Role-Based Portals**: Tailored interfaces for `STUDENT`, `OWNER`, and `ADMIN`/`SUPERVISOR`.
 
 ---
 
-## 🏗️ الهيكل البرمجي (Architecture & Folder Structure)
+## Architecture & Folder Structure
 
-تم تنظيم المشروع باتباع أفضل ممارسات الـ **Feature-based Architecture** مع الالتزام التام بقاعدة **عدم تجاوز أي ملف كود حاجز الـ 1000 سطر**:
+The project follows a **Feature-Based Modular Architecture** with strict separation of concerns:
 
 ```text
 src/
-├── api/                   # عميل الـ API والخدمات المقسمة (Axios/Fetch + Interceptors)
-│   ├── client.ts          # عميل الشبكة الموحد ومعالجة التوكن والأخطاء
-│   ├── auth.api.ts        # خدمات المصادقة وتسجيل الحسابات
-│   ├── listings.api.ts    # خدمات استعراض والبحث في العقارات
-│   ├── ai.api.ts          # بوابات الذكاء الاصطناعي (Match, Search, Lease)
-│   ├── interactions.api.ts# المفضلة، المعاينات، الرسائل، الإشعارات
-│   ├── owner.api.ts       # خدمات المالك ورفع العقارات
-│   └── admin.api.ts       # خدمات المشرف وقائمة المراجعة
-├── components/            # المكونات العامة المشتركة
-│   ├── ui/                # Buttons, Modals, Cards, Badges, Inputs
-│   ├── layout/            # Navbar, Footer, Sidebar, Shells
-│   └── feedback/          # Toast Notifications, Skeleton Loaders
-├── features/              # وحدات النظام المنفصلة (كل ميزة معزولة)
-│   ├── auth/              # شاشات الدخول، التسجيل، واختيار الدور
-│   ├── home/              # الصفحة الرئيسية واستعراض المناطق
-│   ├── explore/           # البحث المتقدم، الفلاتر، كروت الشقق
-│   ├── details/           # تفاصيل العقار، المعرض، وحجز المعاينة
-│   ├── compare/           # جدول المقارنة الشامل
-│   ├── lease-analyzer/    # محلل العقود ورفع المستندات
-│   ├── messages/          # نظام المحادثات الفورية
-│   ├── viewings/          # جدول وإدارة مواعيد المعاينة
-│   ├── owner-dashboard/   # إضافة العقارات وإرسالها للتوثيق
-│   └── admin-dashboard/   # قائمة التوثيق وإدارة المستخدمين
-├── hooks/                 # الـ Custom Hooks لإعادة استخدام المنطق
-├── context/               # إدارة الحالة العامة (Auth, Favorites, UI)
-├── types/                 # تعريفات الـ TypeScript الموحدة
-└── utils/                 # دوال التنسيق المساعدة والتحقق من الملفات
+├── api/                   # API client (Axios + interceptors) & services per domain
+├── components/            # Shared reusable UI primitives and layout shells
+│   ├── layout/            # Navbar, Footer, ProtectedRoute
+│   └── ui/                # Button, Input, Modal, FileUpload, Card, Badge, Toast
+├── context/               # State management (Auth, Favorites, Compare, Toast)
+├── features/              # Decoupled domain feature modules
+│   ├── auth/              # Login, Register, Role onboarding
+│   ├── home/              # Hero, Search, Campus neighborhoods, Featured
+│   ├── explore/           # Advanced filters, Search results, Listing cards
+│   ├── details/           # Property details, Photos, Financial breakdown, Modals
+│   ├── compare/           # Cohort sync, AI recommendations, Comparison table
+│   ├── lease-analyzer/    # Document upload, Risk gauge, Clause breakdown
+│   ├── ai-match/          # Academic compatibility quiz & ranking
+│   ├── messages/          # Direct chat threads with landlords
+│   ├── viewings/          # Tour appointments and feedback
+│   ├── owner-dashboard/   # Property wizard, Document verification upload
+│   └── admin-dashboard/   # Verification queue, User management, Moderation
+├── types/                 # Unified TypeScript interfaces
+└── utils/                 # Formatters and validation utilities
 ```
 
 ---
 
-## 🔌 الربط مع الـ Backend (API & Environment)
+## Getting Started
 
-* **الـ Backend Base URL:** `https://student-housing-backend-api.azurewebsites.net/api/v1`
-* **المتغيرات البيئية (`.env`):**
-  ```env
-  VITE_API_BASE_URL=https://student-housing-backend-api.azurewebsites.net/api/v1
-  ```
-* **نمط الترويسات (Headers):**
-  ```http
-  Authorization: Bearer <jwt_token>
-  Content-Type: application/json
-  ```
-* **هيكل الاستجابة الموحد (Envelope):**
-  * النجاح: `{ "data": ..., "meta": ... }`
-  * الخطأ: `{ "error": { "code": "...", "message": "...", "details": {} } }`
+### Prerequisites
+- Node.js 18.0 or higher
+- npm, yarn, or pnpm
 
----
+### Installation & Run
 
-## 🚀 البدء والتشغيل (Getting Started)
-
-### المتطلبات (Prerequisites)
-- [Node.js](https://nodejs.org/) الإصدار 18 أو أحدث.
-- مدير الحزم `npm` أو `pnpm` أو `yarn`.
-
-### خطوات التثبيت والتشغيل
-1. **استنساخ المستودع (Clone Repo):**
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/KhaledYasser3/Maskan_AI-.git
    cd Maskan_AI-
    ```
 
-2. **تثبيت الاعتماديات (Install Dependencies):**
+2. **Install dependencies:**
    ```bash
    npm install
    ```
 
-3. **إنشاء ملف البيئة (`.env`):**
+3. **Configure environment variables:**
    ```bash
    cp .env.example .env
    ```
+   *Default API URL:* `VITE_API_BASE_URL=https://student-housing-backend-api.azurewebsites.net/api/v1`
 
-4. **تشغيل الخادم المحلي (Run Local Dev Server):**
+4. **Start development server:**
    ```bash
    npm run dev
    ```
+   The application runs on `http://localhost:3000/`.
 
-5. **بناء النسخة الإنتاجية (Production Build):**
+5. **Build for production:**
    ```bash
    npm run build
    ```
 
 ---
 
-## 📜 معايير الجودة والتطوير (Code Standards)
+## Quick Demo Accounts
 
-* **Modularity:** لا يزيد أي ملف كود عن 1000 سطر، مع فصل تام بين طبقة الـ UI وطبقة الـ Logic.
-* **Pixel-Perfect:** مطابقة تامة مع تصميم الـ UI والألوان والمسافات.
-* **Error Handling:** معالجة أخطاء الشبكة والـ 401/403 وتنبيه المستخدم برسائل واضحة.
-* **Upload Limits:** التحقق من حجم المرفقات قبل إرسالها (أقصى حد 10MB) بصيغة `multipart/form-data` واسم الحقل `file`.
+The login page (`/login`) includes one-click access for all three roles:
+- **Student**: `student@cu.edu.eg` / `password123`
+- **Owner**: `owner@dokki-realestate.com` / `password123`
+- **Admin**: `admin@maskan-ai.edu.eg` / `password123`
+
+---
+
+## License
+
+This project is licensed under the MIT License.

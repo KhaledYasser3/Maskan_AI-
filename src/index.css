@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-surface: #fcf9f3;
+    --color-surface-dim: #dcdad4;
+    --color-surface-bright: #fcf9f3;
+    --color-surface-container-lowest: #ffffff;
+    --color-surface-container-low: #f6f3ed;
+    --color-surface-container: #f0eee8;
+    --color-surface-container-high: #ebe8e2;
+    --color-surface-container-highest: #e5e2dc;
+
+    --color-on-surface: #1c1c18;
+    --color-on-surface-variant: #4f453e;
+    --color-inverse-surface: #31312d;
+    --color-inverse-on-surface: #f3f0ea;
+    --color-outline: #81756d;
+    --color-outline-variant: #d2c4bb;
+    --color-surface-tint: #725947;
+
+    --color-primary: #322011;
+    --color-on-primary: #ffffff;
+    --color-primary-container: #4a3525;
+    --color-on-primary-container: #bb9d88;
+    --color-inverse-primary: #e1c0aa;
+
+    --color-secondary: #8e4e1f;
+    --color-on-secondary: #ffffff;
+    --color-secondary-container: #ffab74;
+    --color-on-secondary-container: #783d0e;
+
+    --color-tertiary: #1a2719;
+    --color-on-tertiary: #ffffff;
+    --color-tertiary-container: #2f3d2d;
+    --color-on-tertiary-container: #97a893;
+
+    --color-error: #ba1a1a;
+    --color-error-container: #ffdad6;
+    --color-on-error: #ffffff;
+    --color-on-error-container: #93000a;
+
+    --color-primary-fixed: #fedcc5;
+    --color-primary-fixed-dim: #e1c0aa;
+    --color-on-primary-fixed: #29180a;
+    --color-on-primary-fixed-variant: #594231;
+
+    --color-secondary-fixed: #ffdbc7;
+    --color-secondary-fixed-dim: #ffb688;
+    --color-on-secondary-fixed: #311300;
+    --color-on-secondary-fixed-variant: #703708;
+
+    --color-tertiary-fixed: #d7e7d1;
+    --color-tertiary-fixed-dim: #bbcbb6;
+    --color-on-tertiary-fixed: #111f11;
+    --color-on-tertiary-fixed-variant: #3c4b3a;
+
+    --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-family);
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Material Symbols font settings helper */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+  line-height: 1;
+  display: inline-block;
+  user-select: none;
+}
+
+.material-symbols-filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface-container-low);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-outline-variant);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-outline);
+}
